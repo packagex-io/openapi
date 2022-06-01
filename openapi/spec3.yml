@@ -541,20 +541,23 @@ paths:
                       description: The line2 of the address if the address provided in the address property was a string from autocomplete.
                 parcel: 
                   $ref: "#/components/schemas/parcel"
-                options: 
+                verify_address: 
+                  type: boolean
+                  description: If true will verify the addresses for the sender and recipient.
+                  example: false
+                  default: false
+                provider_timeout: 
+                  type: integer
+                  description: Time in milliseconds to wait for a provider's rate response. Not this is not how long the response will take, rather how long we will wait for responses from every shipping provider. Generally speaking, large carriers typically take about 2500ms to respond.
+                  minimum: 500
+                  maximum: 20000
+                  default: 7500
+                metadata: 
                   type: object
-                  nullable: true
-                  properties:
-                    verify_address: 
-                      type: boolean
-                      description: If true will verify the addresses for the sender and recipient.
-                      example: false
-                    provider_timeout: 
-                      type: integer
-                      description: Time in milliseconds to wait for a provider's rate response. Not this is not how long the response will take, rather how long we will wait for responses from every shipping provider. Generally speaking, large carriers typically take about 2500ms to respond.
-                      minimum: 500
-                      maximum: 20000
-                      default: 7500
+                  description: You can add custom key value pairs to this object. To unset a property you can pass null as the value. To unset the whole object, pass null to the object.
+                  example: {}
+                  default: {}
+
             example:
               sender:
                 name: Jamie Jones
